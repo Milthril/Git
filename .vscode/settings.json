@@ -1,0 +1,7 @@
+{
+    "explorer.confirmDelete": false,
+    "python.formatting.provider": "yapf",
+    "python.linter": "flake8",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true
+}
