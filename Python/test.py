@@ -2,7 +2,7 @@
 
 
 def text_create(name, msg):
-    desktop_path = "D:\\Project\\Git\\Git\\Python\\"
+    desktop_path = ""
     full_path = desktop_path + name + '.txt'
     file = open(full_path, 'w')
     file.write(msg)
@@ -12,7 +12,7 @@ def text_create(name, msg):
 
 text_create('text', 'Hello world!')
 
-f = open("D:\\Project\\Git\\Git\\Python\\text.txt", "r")
+f = open("text.txt", "r")
 while True:
     lines = f.readlines(10000)
     if not lines:
@@ -20,15 +20,15 @@ while True:
     for line in lines:
         print(line.strip())
 
-f = open("D:\\Project\\Git\\Git\\Python\\text.txt", "w")
+f = open("text.txt", "w")
 f.write("hhhhhhlllll")
 f.close()
 
-f = open("D:\\Project\\Git\\Git\\Python\\text.txt", "a")
+f = open("text.txt", "a")
 f.writelines(["oooooo", "kkkkk"])
 f.close()
 
-f = open("D:\\Project\\Git\\Git\\Python\\text.txt")
+f = open("text.txt")
 while True:
     lines = f.readlines(10000)
     if not lines:
