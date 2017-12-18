@@ -1,11 +1,12 @@
 {
-    "explorer.confirmDelete": false,
-    "python.formatting.provider": "yapf",
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "git.autofetch": true,
-    "git.enableSmartCommit": true,
     "workbench.iconTheme": "vscode-great-icons",
     "workbench.colorTheme": "One Monokai",
-    "editor.renderIndentGuides": true
+    "editor.renderIndentGuides": true,
+
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+
+    "python.formatting.provider": "yapf",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true
 }
