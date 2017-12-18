@@ -8,5 +8,4 @@ favorite_languages['edward'] = 'ruby'
 favorite_languages['phil'] = 'python'
 
 for name, language in favorite_languages.items():
-    print(name.title() + "'s favorite language is " +
-        language.title() + ".")
+    print(name.title() + "'s favorite language is " + language.title() + ".")

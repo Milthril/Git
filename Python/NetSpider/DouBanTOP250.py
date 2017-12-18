@@ -2,7 +2,7 @@ from lxml import etree
 import requests
 import time
 
-with open('Python/NetSpider/top250.csv', 'w', encoding='utf-8') as f:
+with open('top250.csv', 'w', encoding='utf-8') as f:
     for a in range(10):
         url = 'https://book.douban.com/top250?start={}'.format(a * 25)
         data = requests.get(url).text

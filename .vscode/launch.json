@@ -19,7 +19,7 @@
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
             "program": "${file}",
-            "cwd": "${workspaceFolder}",
+            "cwd": "",
             "env": {},
             "envFile": "${workspaceFolder}/.env",
             "debugOptions": [
@@ -69,7 +69,7 @@
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
             "program": "${workspaceFolder}/manage.py",
-            "cwd": "${workspaceFolder}",
+            "cwd": "",
             "args": [
                 "runserver",
                 "--noreload",
@@ -89,7 +89,7 @@
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
             "program": "fully qualified path fo 'flask' executable. Generally located along with python interpreter",
-            "cwd": "${workspaceFolder}",
+            "cwd": "",
             "env": {
                 "FLASK_APP": "${workspaceFolder}/quickstart/app.py"
             },
@@ -110,7 +110,7 @@
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
             "program": "${workspaceFolder}/run.py",
-            "cwd": "${workspaceFolder}",
+            "cwd": "",
             "args": [],
             "env": {},
             "envFile": "${workspaceFolder}/.env",
@@ -133,7 +133,7 @@
                 "pythonPath": "${env:SPARK_HOME}/bin/spark-submit"
             },
             "program": "${file}",
-            "cwd": "${workspaceFolder}",
+            "cwd": "",
             "env": {},
             "envFile": "${workspaceFolder}/.env",
             "debugOptions": [
@@ -147,7 +147,7 @@
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
             "module": "module.name",
-            "cwd": "${workspaceFolder}",
+            "cwd": "",
             "env": {},
             "envFile": "${workspaceFolder}/.env",
             "debugOptions": [
@@ -160,7 +160,7 @@
             "request": "launch",
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
-            "cwd": "${workspaceFolder}",
+            "cwd": "",
             "env": {},
             "envFile": "${workspaceFolder}/.env",
             "args": [
@@ -178,7 +178,7 @@
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
             "program": "${workspaceFolder}/console.py",
-            "cwd": "${workspaceFolder}",
+            "cwd": "",
             "args": [
                 "dev",
                 "runserver",
