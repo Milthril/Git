@@ -1,7 +1,6 @@
 # coding=utf-8
 import string
 import random
-import editdistance
 from array import array
 import matplotlib.pyplot as plt
 
@@ -24,6 +23,7 @@ def similarity(p1, p2):
     '''计算两个个体的相似度，通常p2=target，相似度计算方法对收敛速度影响很大。相似度要介于[0, 1]之间'''
     from difflib import SequenceMatcher
     sim = SequenceMatcher(None, p1, p2).ratio()  # 基于相同字符数
+    import editdistance
     sim = 1.0 / (editdistance.eval(p1, p2) + 1)  # 基于编辑距离
     return sim
 
