@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from matplotlib.lines import Line2D
 import matplotlib.pyplot as plt
+import math
 
 
 class Point(object):
@@ -104,7 +104,7 @@ def GetLineNormal(pt1, pt2, is_left):
     start_pt = Point(0, 0)
     end_pt = Point(0, 0)
     if is_left:
-        end_pt.x = dir_vec.y
+        end_pt.x = -dir_vec.y
         end_pt.y = dir_vec.x
     else:
         end_pt.x = dir_vec.y
@@ -129,44 +129,83 @@ def GetPtByVec(pt, vector, dis):
     return new_pt
 
 
-def GetNewPolyLine(poly_line,is_left,dis):
+def GetNewPolyLine(poly_line, is_left, dis):
+    if len(poly_line.point_list) != len(dis):
+        return
+
     old_ploy_list = poly_line.point_list
-    for i in range(len(old_ploy_list)-2):
+    new_poly_list = list()
+    for i in range(0, len(old_ploy_list) - 2):
         temp_pt1 = old_ploy_list[i]
-        temp_pt2 = old_ploy_list.[i+1]
-        temp_pt3 = old_ploy_list.[i+2]
+        temp_pt2 = old_ploy_list[i + 1]
+        temp_pt3 = old_ploy_list[i + 2]
         line_norm_front = GetLineNormal(temp_pt1, temp_pt2, is_left)
         line_norm_back = GetLineNormal(temp_pt2, temp_pt3, is_left)
-        new_front_pt1 = GetPtByVec(temp_pt1, line_norm_front, dis)
-        new_front_pt2 = GetPtByVec(temp_pt2, line_norm_front, dis)
-        new_back_pt1 = GetPtByVec(temp_pt2, line_norm_back, dis)
-        new_back_pt2 = GetPtByVec(temp_pt3, line_norm_back, dis)
-        
+        new_front_pt1 = GetPtByVec(temp_pt1, line_norm_front, dis[i])
+        new_front_pt2 = GetPtByVec(temp_pt2, line_norm_front, dis[i])
+        new_back_pt1 = GetPtByVec(temp_pt2, line_norm_back, dis[i])
+        new_back_pt2 = GetPtByVec(temp_pt3, line_norm_back, dis[i])
 
-        
+        if i == 0:
+            new_poly_list.append(new_front_pt1)
+
+        new_pt = Point(0, 0)
+        if new_front_pt2.x == new_back_pt1.x\
+           and new_front_pt2.y == new_back_pt1.y:
+            new_pt = new_front_pt2
+        else:
+            new_front_line = Line(new_front_pt1, new_front_pt2)
+            new_back_line = Line(new_back_pt1, new_back_pt2)
+            new_pt = GetCrossPoint(new_front_line, new_back_line)
+        new_poly_list.append(new_pt)
+        if i == len(old_ploy_list) - 3:
+            new_poly_list.append(new_back_pt2)
+    new_poly_line = PolyLine(new_poly_list)
+    return new_poly_line
 
 
+pt_list = list()
+dis_list = list()
+for i in range(1, 50):
+    x = i
+    y = 0  # math.sin(i / 5)
+    dis = math.sin(i / 5) + 3  # i / 10 + 3
+    pt = Point(x, y)
+    pt_list.append(pt)
+    dis_list.append(dis)
+poly_line = PolyLine(pt_list)
+new_poly_line = GetNewPolyLine(poly_line, True, dis_list)
+new_poly_line2 = GetNewPolyLine(poly_line, False, dis_list)
 
 # 绘制两条线段和交点
 figure, ax = plt.subplots()
 # 设置x，y值域
-ax.set_xlim(left=0, right=20)
-ax.set_ylim(bottom=0, top=10)
-# 两条line的数据
-line1 = [(p1.x, p1.y), (p2.x, p2.y)]
-line2 = [(p3.x, p3.y), (p4.x, p4.y)]
-line3 = [(p1.x, p1.y), (Pc.x, Pc.y)]
-line4 = [(p3.x, p3.y), (Pc.x, Pc.y)]
-(line1_xs, line1_ys) = zip(*line1)
-(line2_xs, line2_ys) = zip(*line2)
-(line3_xs, line3_ys) = zip(*line3)
-(line4_xs, line4_ys) = zip(*line4)
-# 创建两条线，并添加
-ax.add_line(Line2D(line1_xs, line1_ys, linewidth=2, color='blue'))
-ax.add_line(Line2D(line2_xs, line2_ys, linewidth=2, color='red'))
-ax.add_line(Line2D(line3_xs, line3_ys, linewidth=1, color='yellow'))
-ax.add_line(Line2D(line4_xs, line4_ys, linewidth=1, color='green'))
-# 展示
-plt.plot(Pc.x, Pc.y, 'ro')
-plt.plot()
+ax.set_xlim(left=0, right=50)
+ax.set_ylim(bottom=-10, top=10)
+
+# 绘制polyline数据
+x1_list = list()
+y1_list = list()
+for pt in poly_line.point_list:
+    x1_list.append(pt.x)
+    y1_list.append(pt.y)
+plt.plot(x1_list, y1_list, linewidth=2, color='red')
+plt.scatter(x1_list, y1_list, s=10, color='red')
+
+x2_list = list()
+y2_list = list()
+for pt in new_poly_line.point_list:
+    x2_list.append(pt.x)
+    y2_list.append(pt.y)
+plt.plot(x2_list, y2_list, linewidth=2, color='blue')
+plt.scatter(x2_list, y2_list, s=10, color='blue')
+
+x3_list = list()
+y3_list = list()
+for pt in new_poly_line2.point_list:
+    x3_list.append(pt.x)
+    y3_list.append(pt.y)
+plt.plot(x2_list, y3_list, linewidth=2, color='blue')
+plt.scatter(x2_list, y3_list, s=10, color='blue')
+
 plt.show()
