@@ -87,6 +87,9 @@ def GetCrossPoint(l1, l2):
 
     GetLinePara(l1)
     GetLinePara(l2)
+    if l1.a == l2.a and l2.b == l1.b:
+        return None
+
     d = l1.a * l2.b - l2.a * l1.b
     p = Point()
     p.x = (l1.b * l2.c - l2.b * l1.c) * 1.0 / d
@@ -143,8 +146,8 @@ def GetNewPolyLine(poly_line, is_left, dis):
         line_norm_back = GetLineNormal(temp_pt2, temp_pt3, is_left)
         new_front_pt1 = GetPtByVec(temp_pt1, line_norm_front, dis[i])
         new_front_pt2 = GetPtByVec(temp_pt2, line_norm_front, dis[i])
-        new_back_pt1 = GetPtByVec(temp_pt2, line_norm_back, dis[i])
-        new_back_pt2 = GetPtByVec(temp_pt3, line_norm_back, dis[i])
+        new_back_pt1 = GetPtByVec(temp_pt2, line_norm_back, dis[i + 1])
+        new_back_pt2 = GetPtByVec(temp_pt3, line_norm_back, dis[i + 1])
 
         if i == 0:
             new_poly_list.append(new_front_pt1)
@@ -153,23 +156,30 @@ def GetNewPolyLine(poly_line, is_left, dis):
         if new_front_pt2.x == new_back_pt1.x\
            and new_front_pt2.y == new_back_pt1.y:
             new_pt = new_front_pt2
+            new_poly_list.append(new_pt)
         else:
             new_front_line = Line(new_front_pt1, new_front_pt2)
             new_back_line = Line(new_back_pt1, new_back_pt2)
-            new_pt = GetCrossPoint(new_front_line, new_back_line)
-        new_poly_list.append(new_pt)
+            if GetCrossPoint(new_front_line, new_back_line) == None:
+                new_poly_list.append(new_front_pt2)
+                new_poly_list.append(new_back_pt1)
+            else:
+                new_pt = GetCrossPoint(new_front_line, new_back_line)
+                new_poly_list.append(new_pt)
+
         if i == len(old_ploy_list) - 3:
             new_poly_list.append(new_back_pt2)
+
     new_poly_line = PolyLine(new_poly_list)
     return new_poly_line
 
 
 pt_list = list()
 dis_list = list()
-for i in range(1, 50):
-    x = i
-    y = 0  # math.sin(i / 5)
-    dis = math.sin(i / 5) + 3  # i / 10 + 3
+for i in range(1, 7):
+    x = i 
+    y = i % 2
+    dis = 1 + i * 0.3
     pt = Point(x, y)
     pt_list.append(pt)
     dis_list.append(dis)
@@ -180,8 +190,8 @@ new_poly_line2 = GetNewPolyLine(poly_line, False, dis_list)
 # 绘制两条线段和交点
 figure, ax = plt.subplots()
 # 设置x，y值域
-ax.set_xlim(left=0, right=50)
-ax.set_ylim(bottom=-10, top=10)
+ax.set_xlim(left=-50, right=50)
+ax.set_ylim(bottom=-50, top=50)
 
 # 绘制polyline数据
 x1_list = list()
@@ -200,12 +210,12 @@ for pt in new_poly_line.point_list:
 plt.plot(x2_list, y2_list, linewidth=2, color='blue')
 plt.scatter(x2_list, y2_list, s=10, color='blue')
 
-x3_list = list()
-y3_list = list()
-for pt in new_poly_line2.point_list:
-    x3_list.append(pt.x)
-    y3_list.append(pt.y)
-plt.plot(x2_list, y3_list, linewidth=2, color='blue')
-plt.scatter(x2_list, y3_list, s=10, color='blue')
+# x3_list = list()
+# y3_list = list()
+# for pt in new_poly_line2.point_list:
+#     x3_list.append(pt.x)
+#     y3_list.append(pt.y)
+# plt.plot(x2_list, y3_list, linewidth=2, color='blue')
+# plt.scatter(x2_list, y3_list, s=10, color='blue')
 
 plt.show()
