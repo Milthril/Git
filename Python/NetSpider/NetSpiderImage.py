@@ -18,7 +18,7 @@ def crwal(page):
         for image_url in image_list:
             image_url = "http:" + image_url
             crawl_image(image_url,
-                        "Python/NetSpider/Images/"
+                        "Images/"
                         + image_url.strip().split('/')[-1])
 
 
