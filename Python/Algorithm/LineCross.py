@@ -106,13 +106,13 @@ def GetLineNormal(pt1, pt2, is_left):
     dir_vec = Vector(pt1, pt2)
     start_pt = Point(0, 0)
     end_pt = Point(0, 0)
+    end_pt.x = -dir_vec.y
+    end_pt.y = dir_vec.x
     if is_left:
-        end_pt.x = -dir_vec.y
-        end_pt.y = dir_vec.x
+        return Vector(start_pt, end_pt)
     else:
-        end_pt.x = dir_vec.y
-        end_pt.y = -dir_vec.x
-    return Vector(start_pt, end_pt)
+        return Vector(end_pt, start_pt)
+    
 
 
 def NormalizeVec(vector):
