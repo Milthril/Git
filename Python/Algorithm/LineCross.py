@@ -160,7 +160,7 @@ def GetNewPolyLine(poly_line, is_left, dis):
         else:
             new_front_line = Line(new_front_pt1, new_front_pt2)
             new_back_line = Line(new_back_pt1, new_back_pt2)
-            if GetCrossPoint(new_front_line, new_back_line) == None:
+            if GetCrossPoint(new_front_line, new_back_line) is None:
                 new_poly_list.append(new_front_pt2)
                 new_poly_list.append(new_back_pt1)
             else:
@@ -176,8 +176,8 @@ def GetNewPolyLine(poly_line, is_left, dis):
 
 pt_list = list()
 dis_list = list()
-for i in range(1, 7):
-    x = i 
+for i in range(1, 15):
+    x = i
     y = i % 2
     dis = 1 + i * 0.3
     pt = Point(x, y)
@@ -210,12 +210,12 @@ for pt in new_poly_line.point_list:
 plt.plot(x2_list, y2_list, linewidth=2, color='blue')
 plt.scatter(x2_list, y2_list, s=10, color='blue')
 
-# x3_list = list()
-# y3_list = list()
-# for pt in new_poly_line2.point_list:
-#     x3_list.append(pt.x)
-#     y3_list.append(pt.y)
-# plt.plot(x2_list, y3_list, linewidth=2, color='blue')
-# plt.scatter(x2_list, y3_list, s=10, color='blue')
+x3_list = list()
+y3_list = list()
+for pt in new_poly_line2.point_list:
+    x3_list.append(pt.x)
+    y3_list.append(pt.y)
+plt.plot(x2_list, y3_list, linewidth=2, color='blue')
+plt.scatter(x2_list, y3_list, s=10, color='blue')
 
 plt.show()
