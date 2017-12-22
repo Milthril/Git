@@ -36,13 +36,6 @@ class PolyLine(object):
 
 
 # 初始化数据
-p1 = Point(0, 0)
-p2 = Point(1, 1)
-line1 = Line(p1, p2)
-
-p3 = Point(11.3, 0)
-p4 = Point(5, 2)
-line2 = Line(p3, p4)
 ZERO = 1e-9
 
 
@@ -72,10 +65,6 @@ def is_intersected(A, B, C, D):
         and (vector_product(CA, CB) * vector_product(DA, DB) <= ZERO)
 
 
-result = is_intersected(p1, p2, p3, p4)
-print("两条线段是否相交:", result)
-
-
 # 计算线段交点
 def GetLinePara(line):
     line.a = line.p1.y - line.p2.y
@@ -95,10 +84,6 @@ def GetCrossPoint(l1, l2):
     p.x = (l1.b * l2.c - l2.b * l1.c) * 1.0 / d
     p.y = (l1.c * l2.a - l2.c * l1.a) * 1.0 / d
     return p
-
-
-Pc = GetCrossPoint(line1, line2)
-print("Cross point:", Pc.x, Pc.y)
 
 
 # 求平面中任意多段线按照左右方向平移一定距离的新线
@@ -177,6 +162,7 @@ pt_list = list()
 dis_list = list()
 x_len = 20
 dis_step = 0.3
+y_var = math.sin(x_len)
 for i in range(1, x_len):
     x = i
     y = i % 2
