@@ -112,7 +112,6 @@ def GetLineNormal(pt1, pt2, is_left):
         return Vector(start_pt, end_pt)
     else:
         return Vector(end_pt, start_pt)
-    
 
 
 def NormalizeVec(vector):
@@ -133,7 +132,7 @@ def GetPtByVec(pt, vector, dis):
 
 
 def GetNewPolyLine(poly_line, is_left, dis):
-    if len(poly_line.point_list) != len(dis):
+    if len(poly_line.point_list) != len(dis) + 1:
         return
 
     old_ploy_list = poly_line.point_list
@@ -176,13 +175,19 @@ def GetNewPolyLine(poly_line, is_left, dis):
 
 pt_list = list()
 dis_list = list()
-for i in range(1, 15):
+x_len = 20
+dis_step = 0.3
+for i in range(1, x_len):
     x = i
     y = i % 2
-    dis = 1 + i * 0.3
+    if i < x_len / 2 + 1:
+        dis = 1 - dis_step + i * dis_step
+    else:
+        dis = 1 + dis_step * (x_len / 2) - (i - x_len / 2) * dis_step
     pt = Point(x, y)
     pt_list.append(pt)
     dis_list.append(dis)
+del dis_list[0]
 poly_line = PolyLine(pt_list)
 new_poly_line = GetNewPolyLine(poly_line, True, dis_list)
 new_poly_line2 = GetNewPolyLine(poly_line, False, dis_list)
@@ -215,7 +220,7 @@ y3_list = list()
 for pt in new_poly_line2.point_list:
     x3_list.append(pt.x)
     y3_list.append(pt.y)
-plt.plot(x2_list, y3_list, linewidth=2, color='blue')
-plt.scatter(x2_list, y3_list, s=10, color='blue')
+plt.plot(x3_list, y3_list, linewidth=2, color='blue')
+plt.scatter(x3_list, y3_list, s=10, color='blue')
 
 plt.show()
