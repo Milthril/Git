@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+canvas {
+  border: 1px solid black;
+}
+
+#main_screen {
+  background-image: url('../img/background.png');
+}
