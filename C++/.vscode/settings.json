@@ -1,5 +1,6 @@
 {
     "window.zoomLevel": 0,
+    "editor.fontSize": 16,
     "files.autoGuessEncoding": true,
 
     "editor.snippetSuggestions": "top",
