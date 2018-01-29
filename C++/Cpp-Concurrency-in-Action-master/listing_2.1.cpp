@@ -32,4 +32,5 @@ void oops()
 int main()
 {
     oops();
+    system("pause");
 }

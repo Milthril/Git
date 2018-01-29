@@ -43,4 +43,5 @@ void f()
 int main()
 {
     f();
+    system("pause");
 }
