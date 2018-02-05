@@ -368,7 +368,7 @@
       "name": "js console function",
       "scope": "entity.name.function,support.function.console",
       "settings": {
-        "foreground": "#FF8000"
+        "foreground": "#000C0C"
       }
     },
     {
@@ -460,7 +460,7 @@
       "name": "meta.function-call.python",
       "scope": "meta.function-call.python",
       "settings": {
-        "foreground": "#FF8000"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -482,7 +482,7 @@
       "name": "python function-call.generic",
       "scope": "meta.function-call.generic.python",
       "settings": {
-        "foreground": "#FF80000"
+        "foreground": "#000C0C"
       }
     },
     {
@@ -553,7 +553,7 @@
       "scope":
         "entity.name.function, meta.require, support.function.any-method",
       "settings": {
-        "foreground": "#FF80000"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -1164,7 +1164,7 @@
       "name": "python function decorator @",
       "scope": "meta.function.decorator.python",
       "settings": {
-        "foreground": "#FF80000"
+        "foreground": "#00C0C0"
       }
     },
     {
