@@ -257,14 +257,14 @@
       "name": "operator logical",
       "scope": "keyword.operator.logical.js",
       "settings": {
-        "foreground": "#56b6c2"
+        "foreground": "#00C0C0"
       }
     },
     {
       "name": "operator bitwise",
       "scope": "keyword.operator.bitwise",
       "settings": {
-        "foreground": "#56b6c2"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -301,7 +301,7 @@
       "name": "css property-name",
       "scope": "support.type.vendored.property-name.css",
       "settings": {
-        "foreground": "#56b6c2"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -368,21 +368,21 @@
       "name": "js console function",
       "scope": "entity.name.function,support.function.console",
       "settings": {
-        "foreground": "#000C0C"
+        "foreground": "#00C0C0"
       }
     },
     {
       "name": "js operator",
       "scope": "keyword.operator",
       "settings": {
-        "foreground": "#56b6c2"
+        "foreground": "#00C0C0"
       }
     },
     {
       "name": "js dom",
       "scope": "support.type.object.dom",
       "settings": {
-        "foreground": "#56b6c2"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -396,7 +396,7 @@
       "name": "keyword.operator",
       "scope": "keyword.operator.arithmetic,keyword.operator.comparison",
       "settings": {
-        "foreground": "#56b6c2"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -482,7 +482,7 @@
       "name": "python function-call.generic",
       "scope": "meta.function-call.generic.python",
       "settings": {
-        "foreground": "#000C0C"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -646,7 +646,7 @@
       "name": "Support",
       "scope": "support.function",
       "settings": {
-        "foreground": "#56b6c2"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -688,7 +688,7 @@
       "name": "Constant other symbol",
       "scope": "constant.other.symbol",
       "settings": {
-        "foreground": "#56b6c2"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -1009,7 +1009,7 @@
       "scope":
         "source.json meta.structure.dictionary.json > constant.language.json,source.json meta.structure.array.json > constant.language.json",
       "settings": {
-        "foreground": "#56B6C2"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -1129,7 +1129,7 @@
       "scope":
         "keyword.operator.logical.php,keyword.operator.bitwise.php,keyword.operator.arithmetic.php",
       "settings": {
-        "foreground": "#56b6c2"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -1143,7 +1143,7 @@
       "name": "php comparison",
       "scope": "keyword.operator.comparison.php",
       "settings": {
-        "foreground": "#56b6c2"
+        "foreground": "#00C0C0"
       }
     },
     {
@@ -1207,7 +1207,7 @@
       "name": "rgb-value",
       "scope": "rgb-value",
       "settings": {
-        "foreground": "#56B6C2"
+        "foreground": "#00C0C0"
       }
     },
     {
